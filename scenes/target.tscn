@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bf8tu3ls4gm7j"]
+
+[ext_resource type="Script" path="res://scenes/target.gd" id="1_ry46u"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2fs1b"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0thct"]
+
+[node name="Target" type="StaticBody3D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_ry46u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_2fs1b")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_0thct")
+
+[node name="Immunity" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[connection signal="timeout" from="Immunity" to="." method="_on_immunity_timeout"]

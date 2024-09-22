@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2sjtcipwtgiq"]
+
+[ext_resource type="Texture2D" uid="uid://dh87lxwso4o2y" path="res://images/photo_2023-09-30_05-41-26 (2).jpg" id="1_l43s7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ojml5"]
+albedo_texture = ExtResource("1_l43s7")
+uv1_scale = Vector3(1.855, 1.855, 1.855)
+uv1_offset = Vector3(0.18, 1.045, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_j181y"]
+material = SubResource("StandardMaterial3D_ojml5")
+size = Vector3(3, 3, 0.1)
+
+[node name="Elsa" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 3, -12)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_j181y")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+light_energy = 1.899

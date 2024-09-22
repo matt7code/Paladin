@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://buqbddwwr2bcw"
+path.s3tc="res://.godot/imported/Tyrannosaurus Rex_3.png-451b81234ba22d9006974e9f041f966b.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "052de1f29b41ce53e9ec379c75a54984"
+}
+
+[deps]
+
+source_file="res://objects/Models/Tyrannosaurus Rex_3.png"
+dest_files=["res://.godot/imported/Tyrannosaurus Rex_3.png-451b81234ba22d9006974e9f041f966b.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=8
+roughness/src_normal="res://Models/Tyrannosaurus Rex_2.png"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

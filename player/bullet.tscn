@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5u0f6nvdrpxs"]
+
+[ext_resource type="Script" path="res://player/Bullet.gd" id="1_vs3b7"]
+[ext_resource type="Material" uid="uid://cerx2cxp4ux1h" path="res://materials/bullet.tres" id="2_h23w7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_i4ij2"]
+material = ExtResource("2_h23w7")
+size = Vector3(0.05, 0.05, 0.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_s0scm"]
+points = PackedVector3Array(-0.05, -0.05, -0.235874, 0.057132, 0.057132, 0.253968, 0.057132, -0.0539574, 0.253968, 0.057132, 0.057132, -0.253968, -0.0539574, 0.057132, 0.253968, 0.057132, -0.0539574, -0.253968, -0.0539574, 0.057132, -0.253968, -0.05, -0.05, 0.235874)
+
+[node name="Bullet" type="RigidBody3D"]
+script = ExtResource("1_vs3b7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_i4ij2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_s0scm")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+exclude_parent = false
+target_position = Vector3(0, 0, -0.3)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

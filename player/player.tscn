@@ -1,0 +1,252 @@
+[gd_scene load_steps=15 format=3 uid="uid://c6y8ok7w7pqvc"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_86n10"]
+[ext_resource type="Material" uid="uid://bta46spdwgci8" path="res://materials/player.tres" id="2_vtte2"]
+[ext_resource type="Material" uid="uid://dsxlec2rlaclj" path="res://materials/black.tres" id="3_7t385"]
+[ext_resource type="PackedScene" uid="uid://rh7l5jfpd80m" path="res://player/rifle.tscn" id="4_f3o3w"]
+[ext_resource type="AudioStream" uid="uid://benvwt3x3c0nu" path="res://sounds/laser.wav" id="5_ac0or"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_uvf64"]
+material = ExtResource("2_vtte2")
+height = 1.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_x41t3"]
+material = ExtResource("3_7t385")
+size = Vector3(0.2, 0.04, 0.04)
+
+[sub_resource type="SphereMesh" id="SphereMesh_1jm5u"]
+radius = 0.1
+height = 0.2
+radial_segments = 16
+rings = 16
+
+[sub_resource type="SphereMesh" id="SphereMesh_dg27t"]
+material = ExtResource("3_7t385")
+radius = 0.02
+height = 0.04
+radial_segments = 16
+rings = 16
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fcqlc"]
+radius = 0.55
+height = 1.9
+
+[sub_resource type="Animation" id="Animation_apsgj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodyMesh/LeftEye/Eye:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BodyMesh/RightEye/Eye:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BodyMesh/RightEye/Eye/Pupil:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BodyMesh/LeftEye/Eye:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BodyMesh/RightEye/Eye:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_iiu2i"]
+resource_name = "blink"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodyMesh/LeftEye/Eye:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 0.01, 1), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BodyMesh/RightEye/Eye:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 0.01, 1), Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BodyMesh/LeftEye/Eye/Pupil:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BodyMesh/RightEye/Eye/Pupil:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_v6emv"]
+resource_name = "look_around"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodyMesh/LeftEye/Eye:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.7, 2.5, 3.3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.785398, 0), Vector3(0, -0.785398, 0), Vector3(0, 0.785398, 0), Vector3(0, 0.785398, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BodyMesh/RightEye/Eye:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.7, 2.5, 3.3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.785398, 0), Vector3(0, -0.785398, 0), Vector3(0, 0.785398, 0), Vector3(0, 0.785398, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mj3sd"]
+_data = {
+"RESET": SubResource("Animation_apsgj"),
+"blink": SubResource("Animation_iiu2i"),
+"look_around": SubResource("Animation_v6emv")
+}
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+script = ExtResource("1_86n10")
+
+[node name="BodyMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_uvf64")
+
+[node name="LeftEye" type="Node3D" parent="BodyMesh"]
+
+[node name="Brow" type="MeshInstance3D" parent="BodyMesh/LeftEye"]
+transform = Transform3D(0.857167, 0.515038, 0, -0.515038, 0.857167, 0, 0, 0, 1, 0.309729, 0.53929, -0.542202)
+mesh = SubResource("BoxMesh_x41t3")
+skeleton = NodePath("../Eye")
+
+[node name="Eye" type="MeshInstance3D" parent="BodyMesh/LeftEye"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.219737, 0.417613, -0.505874)
+mesh = SubResource("SphereMesh_1jm5u")
+skeleton = NodePath("../..")
+
+[node name="Pupil" type="MeshInstance3D" parent="BodyMesh/LeftEye/Eye"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0979142)
+mesh = SubResource("SphereMesh_dg27t")
+skeleton = NodePath("../../..")
+
+[node name="RightEye" type="Node3D" parent="BodyMesh"]
+
+[node name="Brow" type="MeshInstance3D" parent="BodyMesh/RightEye"]
+transform = Transform3D(0.857167, -0.515038, 0, 0.515038, 0.857167, 0, 0, 0, 1, -0.31, 0.54, -0.542)
+mesh = SubResource("BoxMesh_x41t3")
+skeleton = NodePath("../../LeftEye/Eye")
+
+[node name="Eye" type="MeshInstance3D" parent="BodyMesh/RightEye"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.22, 0.418, -0.506)
+mesh = SubResource("SphereMesh_1jm5u")
+skeleton = NodePath("../..")
+
+[node name="Pupil" type="MeshInstance3D" parent="BodyMesh/RightEye/Eye"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.098)
+mesh = SubResource("SphereMesh_dg27t")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+shape = SubResource("CapsuleShape3D_fcqlc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mj3sd")
+}
+
+[node name="CameraOrigin" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72415, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraOrigin"]
+spring_length = 2.0
+margin = 0.5
+
+[node name="Camera3D" type="Camera3D" parent="CameraOrigin/SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="Rifle" parent="." instance=ExtResource("4_f3o3w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.699962, 0, -0.467409)
+
+[node name="laser" type="AudioStreamPlayer" parent="Rifle"]
+stream = ExtResource("5_ac0or")
+volume_db = -22.516
+
+[node name="ShootTimer" type="Timer" parent="."]
+one_shot = true

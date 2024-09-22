@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://qa2wipuqks3b"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_furk1"]
+load_path = "res://.godot/imported/photo_2023-09-30_05-41-27.jpg-f66c1e04235c5fa395eb7ba39ff085d2.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dyc15"]
+albedo_texture = SubResource("CompressedTexture2D_furk1")
+uv1_scale = Vector3(1.855, 1.855, 1.855)
+uv1_offset = Vector3(0.165, 1, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_h84vl"]
+material = SubResource("StandardMaterial3D_dyc15")
+size = Vector3(3, 3, 0.1)
+
+[node name="Laura" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 3, -12)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_h84vl")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.33152)
+light_energy = 1.899

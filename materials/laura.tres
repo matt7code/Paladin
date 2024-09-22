@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dhihfatn2hc1q"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_furk1"]
+load_path = "res://.godot/imported/photo_2023-09-30_05-41-27.jpg-f66c1e04235c5fa395eb7ba39ff085d2.s3tc.ctex"
+
+[resource]
+albedo_texture = SubResource("CompressedTexture2D_furk1")
+uv1_scale = Vector3(1.855, 1.855, 1.855)
+uv1_offset = Vector3(0.165, 1.045, 0)

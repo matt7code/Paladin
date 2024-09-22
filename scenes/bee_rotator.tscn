@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://cr7ysmqc8osb4"]
+
+[ext_resource type="PackedScene" uid="uid://diuk888olb6md" path="res://enemies/bee.tscn" id="1_veeww"]
+
+[sub_resource type="Animation" id="Animation_5xkx4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.53788, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_eno2t"]
+resource_name = "rotate"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 6.28319, 0), Vector3(0, 3.14159, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f8p5b"]
+_data = {
+"RESET": SubResource("Animation_5xkx4"),
+"rotate": SubResource("Animation_eno2t")
+}
+
+[node name="bee_rotator" type="Node3D"]
+transform = Transform3D(0.0329109, 0, -0.999458, 0, 1, 0, 0.999458, 0, 0.0329109, 13.312, 2.50734, 0.679516)
+
+[node name="Bee" parent="." instance=ExtResource("1_veeww")]
+transform = Transform3D(-4.47035e-08, 0, 1, 0, 1, 0, -1, 0, -4.47035e-08, 1.71137, 0, -51.9718)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_f8p5b")
+}
+autoplay = "rotate"
